@@ -1,4 +1,3 @@
-// Global counters
 let productCount = 0
 let orderCount = 0
 let userCount = 0
@@ -12,16 +11,11 @@ let editCategoryRow = null
 let editOrderRow = null
 let editUserRow = null
 
-// Category tracking - starts empty!
-let categoryCounts = {}  // Empty object, no default categories
+let categoryCounts = {}  
 
-// Store categories that appear in overview
 let categoriesInOverview = []
 
-// ========== SECTION NAVIGATION ==========
 function showSection(sectionId) {
-    // If settings is clicked, show the empty settings section
-    // but don't do anything else (no active state)
     if(sectionId === 'settings') {
         // Hide all sections
         let sections = document.querySelectorAll('.section')
@@ -29,11 +23,7 @@ function showSection(sectionId) {
             sections[i].classList.remove('active-section')
         }
         
-        // Show settings section (which is empty)
         document.getElementById('settings').classList.add('active-section')
-        
-        // Don't change sidebar active state - keep previous active
-        // This makes it look like clicking settings doesn't do anything
         return
     }
     
@@ -46,27 +36,23 @@ function showSection(sectionId) {
     // Show selected section
     document.getElementById(sectionId).classList.add('active-section')
     
-    // Update sidebar active state
+    // Update sidebar
     let menuItems = document.querySelectorAll('.sidebar li')
     for(let i = 0; i < menuItems.length; i++) {
         menuItems[i].classList.remove('active')
     }
     
-    // Set active menu based on section
     if(sectionId === 'dashboard') menuItems[0].classList.add('active')
     if(sectionId === 'products') menuItems[1].classList.add('active')
     if(sectionId === 'categories') menuItems[2].classList.add('active')
     if(sectionId === 'orders') menuItems[3].classList.add('active')
     if(sectionId === 'users') menuItems[4].classList.add('active')
-    // Settings menu item (index 5) never gets active class
     
-    // Update product dropdown when showing orders
     if(sectionId === 'orders') {
         updateProductDropdown()
     }
 }
 
-// ========== PRODUCT FUNCTIONS ==========
 function addProduct() {
     let name = document.getElementById("name").value
     let price = document.getElementById("price").value
@@ -74,7 +60,6 @@ function addProduct() {
     let category = document.getElementById("category").value
     let desc = document.getElementById("desc").value
 
-    // Validation
     if(name === "" || price === "" || qty === "" || category === "" || desc === "") {
         alert("Please fill all fields")
         return
@@ -83,18 +68,15 @@ function addProduct() {
     let table = document.getElementById("productTable")
     let overviewTable = document.getElementById("productOverviewTable")
 
-    // UPDATE PRODUCT
     if(editProductRow !== null) {
         let oldCategory = editProductRow.cells[4].innerText
         
-        // Update main table
         editProductRow.cells[1].innerText = name
         editProductRow.cells[2].innerText = "$" + price
         editProductRow.cells[3].innerText = qty
         editProductRow.cells[4].innerText = category
         editProductRow.cells[5].innerText = desc
         
-        // Update overview table
         let rowId = editProductRow.cells[0].innerText
         for(let i = 0; i < overviewTable.rows.length; i++) {
             if(overviewTable.rows[i].cells[0].innerText === rowId) {
@@ -107,7 +89,6 @@ function addProduct() {
             }
         }
         
-        // Update category counts
         if(oldCategory !== category) {
             categoryCounts[oldCategory]--
             if(categoryCounts[oldCategory] === 0) {
@@ -128,11 +109,9 @@ function addProduct() {
         return
     }
 
-    // ADD NEW PRODUCT
     productCount++
     document.getElementById("productCount").innerText = productCount
     
-    // Add to main table
     let row = table.insertRow()
     row.insertCell(0).innerText = productCount
     row.insertCell(1).innerText = name
@@ -145,7 +124,6 @@ function addProduct() {
     actions.innerHTML = "<button class='action-btn edit-btn' onclick='editProduct(this)'>Edit</button>" +
                         "<button class='action-btn delete-btn' onclick='deleteProduct(this)'>Delete</button>"
     
-    // Add to overview table
     let overviewRow = overviewTable.insertRow()
     overviewRow.insertCell(0).innerText = productCount
     overviewRow.insertCell(1).innerText = name
@@ -154,7 +132,6 @@ function addProduct() {
     overviewRow.insertCell(4).innerText = category
     overviewRow.insertCell(5).innerText = desc
     
-    // Update category
     categoryCounts[category]++
     if(categoryCounts[category] === 1) {
         addCategoryToOverview(category)
@@ -186,10 +163,8 @@ function deleteProduct(btn) {
         let category = row.cells[4].innerText
         let rowId = row.cells[0].innerText
         
-        // Remove from main table
         row.remove()
         
-        // Remove from overview
         for(let i = 0; i < overviewTable.rows.length; i++) {
             if(overviewTable.rows[i].cells[0].innerText === rowId) {
                 overviewTable.deleteRow(i)
@@ -226,7 +201,6 @@ function clearProductForm() {
     document.getElementById("desc").value = ""
 }
 
-// ========== CATEGORY FUNCTIONS ==========
 function addCategory() {
     let categoryName = document.getElementById("categoryName").value
     
@@ -235,7 +209,6 @@ function addCategory() {
         return
     }
     
-    // Check if category exists
     if(categoryCounts[categoryName] !== undefined) {
         alert("Category already exists")
         return
@@ -244,14 +217,12 @@ function addCategory() {
     // Add new category
     categoryCounts[categoryName] = 0
     
-    // Add to dropdown in Add Product form
     let select = document.getElementById("category")
     let option = document.createElement("option")
     option.value = categoryName
     option.text = categoryName
     select.add(option)
     
-    // Add to category table
     let table = document.getElementById("categoryTable")
     categoryId++
     let row = table.insertRow()
@@ -272,17 +243,14 @@ function editCategory(btn) {
     
     let newName = prompt("Edit category name:", oldName)
     if(newName && newName !== oldName) {
-        // Check if new name exists
         if(categoryCounts[newName] !== undefined) {
             alert("Category name already exists")
             return
         }
         
-        // Update category counts
         categoryCounts[newName] = categoryCounts[oldName]
         delete categoryCounts[oldName]
         
-        // Update dropdown in Add Product form
         let select = document.getElementById("category")
         for(let i = 0; i < select.options.length; i++) {
             if(select.options[i].value === oldName) {
@@ -292,15 +260,12 @@ function editCategory(btn) {
             }
         }
         
-        // Update products with this category
         updateProductsCategory(oldName, newName)
         
-        // Update category overview if needed
         if(categoriesInOverview.includes(oldName)) {
             let index = categoriesInOverview.indexOf(oldName)
             categoriesInOverview[index] = newName
             
-            // Update category overview table
             let catTable = document.getElementById("categoryOverviewTable")
             for(let i = 0; i < catTable.rows.length; i++) {
                 if(catTable.rows[i].cells[1].innerText === oldName) {
@@ -310,7 +275,6 @@ function editCategory(btn) {
             }
         }
         
-        // Update table
         row.cells[1].innerText = newName
         alert("Category updated successfully")
     }
@@ -321,16 +285,13 @@ function deleteCategory(btn) {
         let row = btn.parentNode.parentNode
         let categoryName = row.cells[1].innerText
         
-        // Check if category has products
         if(categoryCounts[categoryName] > 0) {
             alert("Cannot delete category with existing products")
             return
         }
         
-        // Remove from category counts
         delete categoryCounts[categoryName]
         
-        // Remove from dropdown in Add Product form
         let select = document.getElementById("category")
         for(let i = 0; i < select.options.length; i++) {
             if(select.options[i].value === categoryName) {
@@ -339,12 +300,10 @@ function deleteCategory(btn) {
             }
         }
         
-        // Remove from category overview if present
         if(categoriesInOverview.includes(categoryName)) {
             removeCategoryFromOverview(categoryName)
         }
         
-        // Remove from table
         row.remove()
         updateCategoryIds()
         alert("Category deleted successfully")
@@ -355,14 +314,12 @@ function updateProductsCategory(oldName, newName) {
     let productTable = document.getElementById("productTable")
     let overviewTable = document.getElementById("productOverviewTable")
     
-    // Update main table
     for(let i = 0; i < productTable.rows.length; i++) {
         if(productTable.rows[i].cells[4].innerText === oldName) {
             productTable.rows[i].cells[4].innerText = newName
         }
     }
     
-    // Update overview
     for(let i = 0; i < overviewTable.rows.length; i++) {
         if(overviewTable.rows[i].cells[4].innerText === oldName) {
             overviewTable.rows[i].cells[4].innerText = newName
@@ -378,7 +335,6 @@ function updateCategoryIds() {
     categoryId = table.rows.length
 }
 
-// ========== ORDER FUNCTIONS ==========
 function addOrder() {
     let orderName = document.getElementById("orderName").value
     let qty = document.getElementById("orderQty").value
@@ -393,14 +349,12 @@ function addOrder() {
     let table = document.getElementById("orderTable")
     let overviewTable = document.getElementById("orderOverviewTable")
     
-    // UPDATE ORDER
     if(editOrderRow !== null) {
         editOrderRow.cells[1].innerText = orderName
         editOrderRow.cells[2].innerText = qty
         editOrderRow.cells[3].innerText = date
         editOrderRow.cells[4].innerText = product
         
-        // Update overview
         let rowId = editOrderRow.cells[0].innerText
         for(let i = 0; i < overviewTable.rows.length; i++) {
             if(overviewTable.rows[i].cells[0].innerText === rowId) {
@@ -415,7 +369,6 @@ function addOrder() {
         editOrderRow = null
         alert("Order updated successfully")
     } else {
-        // ADD NEW ORDER
         orderId++
         orderCount++
         document.getElementById("orderCount").innerText = orderCount
@@ -432,7 +385,6 @@ function addOrder() {
         actions.innerHTML = "<button class='action-btn edit-btn' onclick='editOrder(this)'>Edit</button>" +
                             "<button class='action-btn delete-btn' onclick='deleteOrder(this)'>Delete</button>"
         
-        // Add to overview
         let overviewRow = overviewTable.insertRow()
         overviewRow.insertCell(0).innerText = orderId
         overviewRow.insertCell(1).innerText = orderName
@@ -504,7 +456,6 @@ function updateProductDropdown() {
     }
 }
 
-// ========== USER FUNCTIONS ==========
 function addUser() {
     let userName = document.getElementById("userName").value
     let email = document.getElementById("userEmail").value
@@ -524,7 +475,6 @@ function addUser() {
         editUserRow.cells[2].innerText = email
         editUserRow.cells[3].innerText = phone
         
-        // Update overview
         let rowId = editUserRow.cells[0].innerText
         for(let i = 0; i < overviewTable.rows.length; i++) {
             if(overviewTable.rows[i].cells[0].innerText === rowId) {
@@ -538,12 +488,10 @@ function addUser() {
         editUserRow = null
         alert("User updated successfully")
     } else {
-        // ADD NEW USER
         userId++
         userCount++
         document.getElementById("userCount").innerText = userCount
         
-        // Add to main table
         let row = table.insertRow()
         row.insertCell(0).innerText = userId
         row.insertCell(1).innerText = userName
@@ -554,7 +502,6 @@ function addUser() {
         actions.innerHTML = "<button class='action-btn edit-btn' onclick='editUser(this)'>Edit</button>" +
                             "<button class='action-btn delete-btn' onclick='deleteUser(this)'>Delete</button>"
         
-        // Add to overview table
         let overviewRow = overviewTable.insertRow()
         overviewRow.insertCell(0).innerText = userId
         overviewRow.insertCell(1).innerText = userName
@@ -585,7 +532,6 @@ function deleteUser(btn) {
         
         row.remove()
         
-        // Remove from overview
         for(let i = 0; i < overviewTable.rows.length; i++) {
             if(overviewTable.rows[i].cells[0].innerText === rowId) {
                 overviewTable.deleteRow(i)
@@ -620,7 +566,6 @@ function updateUserIds() {
     userId = table.rows.length
 }
 
-// ========== CATEGORY OVERVIEW FUNCTIONS ==========
 function addCategoryToOverview(categoryName) {
     if(categoriesInOverview.includes(categoryName)) return
     
@@ -638,7 +583,6 @@ function removeCategoryFromOverview(categoryName) {
         if(table.rows[i].cells[1].innerText === categoryName) {
             table.deleteRow(i)
             
-            // Remove from array
             let index = categoriesInOverview.indexOf(categoryName)
             if(index !== -1) {
                 categoriesInOverview.splice(index, 1)
@@ -659,9 +603,7 @@ function updateCategoryCount() {
     document.getElementById("categoryCount").innerText = count
 }
 
-// ========== INITIALIZATION ==========
 window.onload = function() {
-    // Reset all counters
     productCount = 0
     orderCount = 0
     userCount = 0
@@ -669,27 +611,22 @@ window.onload = function() {
     userId = 0
     orderId = 0
     
-    // Reset category counts - starts EMPTY
-    categoryCounts = {}  // No default categories!
+    categoryCounts = {} 
     
     categoriesInOverview = []
     
-    // Clear any existing options in category dropdown
     let categorySelect = document.getElementById("category")
     categorySelect.innerHTML = "<option value=''>Select category</option>"
     
-    // Reset displays
     document.getElementById("productCount").innerText = "0"
     document.getElementById("orderCount").innerText = "0"
     document.getElementById("categoryCount").innerText = "0"
     document.getElementById("userCount").innerText = "0"
     
-    // Set default date in order form
     let today = new Date().toISOString().split('T')[0]
     if(document.getElementById("orderDate")) {
         document.getElementById("orderDate").value = today
     }
-    
-    // Show dashboard by default
-    showSection('dashboard')
+        showSection('dashboard')
+
 }
