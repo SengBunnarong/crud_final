@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SETEC POS - Dark Green Theme</title>
+    <link rel="stylesheet" href="final.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="sidebar">
+        <img src="logo.png" width="200px" alt="Logo">
+        <ul id="navMenu">
+            <li onclick="showSection('dashboard')" class="active">Dashboard</li>
+            <li onclick="showSection('products')">Products</li>
+            <li onclick="showSection('categories')">Categories</li>
+            <li onclick="showSection('orders')">Orders</li>
+            <li onclick="showSection('users')">Users</li>
+            <li class="disabled-setting" onclick="showSection('settings')">Setting</li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section active-section">
+            <h1>Dashboard</h1>
+            <div class="cards">
+                <div class="card">
+                    <h2 id="productCount">0</h2>
+                    <p>Products</p>
+                </div>
+                <div class="card">
+                    <h2 id="orderCount">0</h2>
+                    <p>Orders</p>
+                </div>
+                <div class="card">
+                    <h2 id="categoryCount">0</h2>
+                    <p>Categories</p>
+                </div>
+                <div class="card">
+                    <h2 id="userCount">0</h2>
+                    <p>Users</p>
+                </div>
+            </div>
+
+            <!-- Products Overview -->
+            <div class="overview-section">
+                <h2>Products Overview</h2>
+                <div class="table-container">
+                    <table class="overview-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productOverviewTable"></tbody>
+                    </table>
+                </div>
+                <div class="more-info" onclick="showSection('products')">
+                    <p>Manage Products <span class="arrow">→</span></p>
+                </div>
+            </div>
+
+            <!-- Orders Overview -->
+            <div class="overview-section">
+                <h2>Orders Overview</h2>
+                <div class="table-container">
+                    <table class="overview-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Order Name</th>
+                                <th>QTY</th>
+                                <th>Date</th>
+                                <th>Product</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderOverviewTable"></tbody>
+                    </table>
+                </div>
+                <div class="more-info" onclick="showSection('orders')">
+                    <p>Manage Orders <span class="arrow">→</span></p>
+                </div>
+            </div>
+
+            <!-- Categories Overview -->
+            <div class="overview-section">
+                <h2>Categories Overview</h2>
+                <div class="table-container">
+                    <table class="overview-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category Name</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoryOverviewTable"></tbody>
+                    </table>
+                </div>
+                <div class="more-info" onclick="showSection('categories')">
+                    <p>Manage Categories <span class="arrow">→</span></p>
+                </div>
+            </div>
+
+            <!-- Users Overview -->
+            <div class="overview-section">
+                <h2>Users Overview</h2>
+                <div class="table-container">
+                    <table class="overview-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userOverviewTable"></tbody>
+                    </table>
+                </div>
+                <div class="more-info" onclick="showSection('users')">
+                    <p>Manage Users <span class="arrow">→</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Section -->
+        <div id="products" class="section">
+            <h1>Products Management</h1>
+            
+            <!-- Add Product -->
+            <div class="product-section">
+                <h2>Add Product</h2>
+                <div class="form-container">
+                    <form id="productForm" onsubmit="event.preventDefault(); addProduct()">
+                        <div class="form-group">
+                            <label for="name">Product Name</label>
+                            <input type="text" id="name" placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price ($)</label>
+                            <input type="number" id="price" placeholder="Enter price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="qty">Quantity</label>
+                            <input type="number" id="qty" placeholder="Enter quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select category</option>
+                                <!-- Categories will be added here dynamically from JavaScript -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description</label>
+                            <textarea id="desc" placeholder="Enter product description" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" id="productBtn" class="submit-btn">Add Product</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- List Products -->
+            <div class="product-section">
+                <h2>List Products</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Section -->
+        <div id="categories" class="section">
+            <h1>Categories Management</h1>
+            
+            <!-- Add Category -->
+            <div class="product-section">
+                <h2>Add Category</h2>
+                <div class="form-container">
+                    <form id="categoryForm" onsubmit="event.preventDefault(); addCategory()">
+                        <div class="form-group">
+                            <label for="categoryName">Category Name</label>
+                            <input type="text" id="categoryName" placeholder="Enter category name" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Category</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- List Categories -->
+            <div class="product-section">
+                <h2>List Categories</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="categoryTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div id="orders" class="section">
+            <h1>Orders Management</h1>
+            
+            <!-- Add Order -->
+            <div class="product-section">
+                <h2>Add Order</h2>
+                <div class="form-container">
+                    <form id="orderForm" onsubmit="event.preventDefault(); addOrder()">
+                        <div class="form-group">
+                            <label for="orderName">Order Name</label>
+                            <input type="text" id="orderName" placeholder="Enter order name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderQty">Quantity</label>
+                            <input type="number" id="orderQty" placeholder="Enter quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderDate">Date</label>
+                            <input type="date" id="orderDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderProduct">Product</label>
+                            <select id="orderProduct" required>
+                                <option value="">Select product</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Order</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- List Orders -->
+            <div class="product-section">
+                <h2>List Orders</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Order Name</th>
+                                <th>QTY</th>
+                                <th>Date</th>
+                                <th>Product</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div id="users" class="section">
+            <h1>Users Management</h1>
+            
+            <!-- Add User -->
+            <div class="product-section">
+                <h2>Add User</h2>
+                <div class="form-container">
+                    <form id="userForm" onsubmit="event.preventDefault(); addUser()">
+                        <div class="form-group">
+                            <label for="userName">User Name</label>
+                            <input type="text" id="userName" placeholder="Enter user name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" placeholder="Enter email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Phone</label>
+                            <input type="tel" id="userPhone" placeholder="Enter phone number" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Add User</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- List Users -->
+            <div class="product-section">
+                <h2>List Users</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Section - Completely Empty and Disabled -->
+        <div id="settings" class="section">
+            <h1>Settings</h1>
+            <div class="empty-settings">
+                <p>Settings</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="final.js"></script>
+</body>
+</html>
