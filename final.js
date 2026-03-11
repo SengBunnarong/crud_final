@@ -61,6 +61,7 @@ function addProduct() {
         return
     }
 
+    
     let table = document.getElementById("productTable")
     let overviewTable = document.getElementById("productOverviewTable")
 
@@ -622,3 +623,4 @@ window.onload = function() {
     
     showSection('dashboard')
 }
+
