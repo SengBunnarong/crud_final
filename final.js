@@ -5,7 +5,6 @@ let categoryId = 0
 let userId = 0
 let orderId = 0
 
-// For editing
 let editProductRow = null
 let editCategoryRow = null
 let editOrderRow = null
@@ -17,26 +16,23 @@ let categoriesInOverview = []
 
 function showSection(sectionId) {
     if(sectionId === 'settings') {
-        // Hide all sections
         let sections = document.querySelectorAll('.section')
         for(let i = 0; i < sections.length; i++) {
             sections[i].classList.remove('active-section')
         }
         
         document.getElementById('settings').classList.add('active-section')
+        
         return
     }
     
-    // Hide all sections
     let sections = document.querySelectorAll('.section')
     for(let i = 0; i < sections.length; i++) {
         sections[i].classList.remove('active-section')
     }
     
-    // Show selected section
     document.getElementById(sectionId).classList.add('active-section')
     
-    // Update sidebar
     let menuItems = document.querySelectorAll('.sidebar li')
     for(let i = 0; i < menuItems.length; i++) {
         menuItems[i].classList.remove('active')
@@ -175,7 +171,6 @@ function deleteProduct(btn) {
         productCount--
         document.getElementById("productCount").innerText = productCount
         
-        // Update category
         categoryCounts[category]--
         if(categoryCounts[category] === 0) {
             removeCategoryFromOverview(category)
@@ -214,7 +209,6 @@ function addCategory() {
         return
     }
     
-    // Add new category
     categoryCounts[categoryName] = 0
     
     let select = document.getElementById("category")
@@ -373,7 +367,6 @@ function addOrder() {
         orderCount++
         document.getElementById("orderCount").innerText = orderCount
         
-        // Add to main table
         let row = table.insertRow()
         row.insertCell(0).innerText = orderId
         row.insertCell(1).innerText = orderName
@@ -469,7 +462,6 @@ function addUser() {
     let table = document.getElementById("userTable")
     let overviewTable = document.getElementById("userOverviewTable")
     
-    // UPDATE USER
     if(editUserRow !== null) {
         editUserRow.cells[1].innerText = userName
         editUserRow.cells[2].innerText = email
@@ -611,7 +603,7 @@ window.onload = function() {
     userId = 0
     orderId = 0
     
-    categoryCounts = {} 
+    categoryCounts = {}  
     
     categoriesInOverview = []
     
@@ -627,6 +619,6 @@ window.onload = function() {
     if(document.getElementById("orderDate")) {
         document.getElementById("orderDate").value = today
     }
-        showSection('dashboard')
-
+    
+    showSection('dashboard')
 }
