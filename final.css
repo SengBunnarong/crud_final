@@ -724,3 +724,10 @@ body.dark .school-carousel {
         height: 300px;
     }
 }
+
+.footer-box i {
+    color: #f8931f;
+    width: 18px;
+    margin-right: 8px;
+    text-align: center;
+}
