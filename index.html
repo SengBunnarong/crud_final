@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CamBest | Home</title>
     <link rel="icon" type="image/png" href="iconlogo.png">
-    <link rel="stylesheet" href="final.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ranchers&display=swap" rel="stylesheet">
 </head>
     <!-- LOGO BAR -->
@@ -32,11 +32,11 @@
     <!-- NAVBAR -->
     <nav>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Programs</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
@@ -46,7 +46,7 @@
             <img src="01 (3).png" alt="Slide 1">
             <img src="4.jpg" alt="Slide 2">
             <img src="03 (3).png" alt="Slide 3">
-            <img src="student2.jpg" alt="Slide 4">
+            <img src="student2.png" alt="Slide 4">
             <img src="photo_2026-04-24_11-25-58.jpg" alt="Slide 5">
             <img src="02 (3).png" alt="Slide 6">
         </div>
@@ -121,30 +121,38 @@
         </div>
     </div>
 
-        <footer class="footer">
-    <div class="footer-container">
+<footer style="background-color: #113b61; color: rgba(255,255,255,0.85); margin-top: 60px;">
+    <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; padding: 50px 20px;">
 
-        <div class="footer-box">
-            <h3>CamBest School</h3>
-            <p>
-                Providing quality education for young learners in a safe,
-                supportive, and friendly environment.
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">CamBest School</h3>
+            <p style="font-size: 14px; line-height: 1.6;">Providing quality education for young learners in a safe, supportive, and friendly environment.</p>
+        </div>
+
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">Contact</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 6px;">
+                <i class="fa-solid fa-location-dot" style="margin-right: 6px;"></i>Sangkat Khmuonh, Phnom Penh
+            </p>
+            <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; margin-bottom: 6px;">
+                <i class="fa-solid fa-phone" style="margin-top: 3px; flex-shrink: 0;"></i>
+                <div style="display: flex; flex-direction: column; gap: 2px; line-height: 1.6;">
+                    <span>096 674 679</span>
+                    <span>017 737 362</span>
+                    <span>097 352 387 8</span>
+                </div>
+            </div>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> cambestschool@email.com
             </p>
         </div>
 
-        <div class="footer-box">
-            <h3>Contact</h3>
-            <p><i class="fa-solid fa-location-dot"></i> Phnom Penh, Cambodia</p>
-            <p><i class="fa-solid fa-phone"></i> +855 000 000 000</p>
-            <p><i class="fa-solid fa-envelope"></i> cambestschool@email.com</p>
-        </div>
-
     </div>
 
-    <div class="footer-bottom">
-        <p>© 2026 CamBest School. All rights reserved.</p>
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); text-align: center; padding: 14px 20px; font-size: 13px; color: rgba(255,255,255,0.5);">
+        <p style="margin: 0;">© 2026 CamBest School. All rights reserved.</p>
     </div>
 </footer>
-    <script src="final.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
