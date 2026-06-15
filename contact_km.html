@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamBest | Contact</title>
+    <link rel="icon" type="image/png" href="image/iconlogo.png">
+    <link rel="stylesheet" href="style_km.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;200;300;400;500;600;700&family=Nunito:wght@200;300;400;500;600;700;800;900&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ranchers&display=swap" rel="stylesheet"></head>
+<style>
+
+    /* --- HERO --- */
+    .contact-hero {
+        text-align: center;
+        padding: 40px 20px 20px;
+    }
+
+    .contact-hero h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .contact-hero p {
+        font-size: 15px;
+        color: #666;
+    }
+
+    /* --- CARD WRAPPER --- */
+    .contact-wrapper {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    /* --- INFO CARD --- */
+    .contact-card {
+        background: #f9f9f9;
+        border: 1px solid #e8e8e8;
+        border-radius: 10px;
+        padding: 24px;
+    }
+
+    .contact-card h2 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .contact-card h2 i {
+        font-size: 16px;
+        color: #1a73e8;
+    }
+
+    /* --- INNER LAYOUT (photo + details side by side) --- */
+    .contact-info-layout {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+    }
+
+    /* --- PHOTO --- */
+    .contact-photo-wrapper {
+        width: 220px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .contact-photo-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* --- CONTACT DETAILS --- */
+    .contact-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .contact-row i {
+        color: #1a73e8;
+        font-size: 15px;
+        margin-top: 2px;
+        width: 18px;
+        flex-shrink: 0;
+    }
+
+    .divider-line {
+        border: none;
+        border-top: 1px solid #e8e8e8;
+        margin: 14px 0;
+    }
+
+    /* --- MAP SECTION --- */
+    .map-section {
+        max-width: 900px;
+        margin: 0 auto 40px;
+        padding: 0 20px;
+    }
+
+    .map-section h2 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .map-section h2 i {
+        color: #1a73e8;
+    }
+
+    /* --- FOOTER PHONES --- */
+    .footer-phones {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .footer-phones i {
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    .footer-phone-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        line-height: 1.6;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 650px) {
+        .contact-info-layout {
+            flex-direction: column;
+        }
+
+        .contact-photo-wrapper {
+            width: 100%;
+            height: 200px;
+        }
+    }
+
+</style>
+<body>
+
+    <!-- LOGO BAR -->
+    <div class="logo-bar">
+        <img src="logo_home.png" alt="CamBest Logo">
+        <div class="header-controls">
+            <div class="lang-switcher">
+                <img id="flag" src="kh.jpg" alt="Flag">
+                <select id="langSelect" onchange="switchLang()">
+                    <option value="km">ខ្មែរ</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li><a href="index_km.html">ទំព័រដើម</a></li>
+            <li><a href="about_km.html">អំពីសាលា</a></li>
+            <li><a href="programs_km.html">វគ្គសិក្សា</a></li>
+            <li><a href="gallery_km.html">រូបភាព</a></li>
+            <li><a href="contact_km.html" class="active">ទំនាក់ទំនង</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="contact-hero">
+        <h1>ទំនាក់ទំនង</h1>
+        <p>ទាក់ទង់មកកាន់សាលាឥឡូវនេះ។</p>
+    </div>
+
+    <!-- CONTACT CARD -->
+    <div class="contact-wrapper">
+        <div class="contact-card">
+            <h2><i class="fa-solid fa-address-book"></i> ទាក់ទង</h2>
+
+            <div class="contact-info-layout">
+
+                <!-- Photo -->
+                <div class="contact-photo-wrapper">
+                    <img src="image/iconlogo.png" alt="School photo">
+                </div>
+
+                <!-- Details -->
+                <div class="contact-details">
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>cambestschool@email.com</span>
+                    </div>
+
+                    <hr class="divider-line">
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <div>096 674 679 (Metfone)</div>
+                            <div>017 737 362 (Cellcard)</div>
+                            <div>097 352 387 8 (Metfone)</div>
+                        </div>
+                    </div>
+
+                    <hr class="divider-line">
+
+                    <div class="contact-row">
+                        <i class="fa-brands fa-telegram" style="color: #0088cc;"></i>
+                        <div>
+                            <div style="font-weight: 600;">@CamBestSchool</div>
+                            <div style="font-size: 13px; color: #888; margin-top: 2px;">Fast replies &amp; enrollment inquiries</div>
+                            <a href="https://t.me/CamBestSchool" target="_blank" style="display: inline-block; margin-top: 8px; background: #0088cc; color: white; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 6px; text-decoration: none;">Open Telegram</a>
+                        </div>
+                    </div>
+
+                    <hr class="divider-line">
+
+                    <div class="contact-row">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <div>ថ្ងៃ ចន្ទ – សុក្រ: 7:00 AM – 5:00 PM</div>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-section">
+        <h2><i class="fa-solid fa-location-dot"></i> Our Location</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3909.0!2d104.8706!3d11.6406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2skh!4v1700000000000!5m2!1sen!2skh"
+            width="100%"
+            height="320"
+            style="border: 1px solid #d5d5d5; border-radius: 10px; display: block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+<footer style="background-color: #113b61; color: rgba(255,255,255,0.85); margin-top: 60px;">
+    <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; padding: 50px 20px;">
+
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">សាលារៀន​ ខេមប៊េស</h3>
+            <p style="font-size: 14px; line-height: 1.6;">ការអប់រំប្រកបដោយគុណភាព សម្រាប់សិស្សានុសិស្សវ័យក្មេង ក្នុងបរិយាកាសប្រកបដោយការយកចិត្តទុកដាក់</p>
+        </div>
+
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">ទំនាក់ទំនង</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 6px;">
+                <i class="fa-solid fa-location-dot" style="margin-right: 6px;"></i>សង្កាត់ឃ្មួញ, រាជធានីភ្នំពេញ
+            </p>
+            <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; margin-bottom: 6px;">
+                <i class="fa-solid fa-phone" style="margin-top: 3px; flex-shrink: 0;"></i>
+                <div style="display: flex; flex-direction: column; gap: 2px; line-height: 1.6;">
+                    <span>096 674 679</span>
+                    <span>017 737 362</span>
+                    <span>097 352 387 8</span>
+                </div>
+            </div>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> cambestschool@email.com
+            </p>
+        </div>
+
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); text-align: center; padding: 14px 20px; font-size: 13px; color: rgba(255,255,255,0.5);">
+        <p style="margin: 0;">© 2026 CamBest School. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

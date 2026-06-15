@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CamBest | Gallery</title>
+    <link rel="icon" type="image/png" href="image/iconlogo.png">
+    <link rel="stylesheet" href="style_km.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Khmer&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ranchers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ranchers&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    .gallery-hero {
+        text-align: center;
+        padding: 40px 20px 20px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .gallery-hero p {
+        font-size: 15px;
+        color: #666;
+    }
+
+    .gallery-section {
+        padding: 30px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .gallery-section h2 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .photo-placeholder {
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        aspect-ratio: 4/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        font-size: 13px;
+        gap: 8px;
+    }
+
+    .photo-placeholder i {
+        font-size: 28px;
+        color: #bbb;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 16px;
+        margin-bottom: 10px;
+    }
+
+    .video-placeholder {
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        aspect-ratio: 16/9;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .video-placeholder i {
+        font-size: 40px;
+        color: #fff;
+        opacity: 0.6;
+    }
+
+    .section-divider {
+        border: none;
+        border-top: 1px solid #ebebeb;
+        margin: 10px 20px;
+    }
+
+</style>
+<body>
+
+    <!-- LOGO BAR -->
+    <div class="logo-bar">
+        <img src="logo_home.png" alt="CamBest Logo">
+        <div class="header-controls">
+            <div class="lang-switcher">
+                <img id="flag" src="kh.jpg" alt="Flag">
+                <select id="langSelect" onchange="switchLang()">
+                    <option value="km">ខ្មែរ</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li><a href="index_km.html">ទំព័រដើម</a></li>
+            <li><a href="about_km.html">អំពីសាលា</a></li>
+            <li><a href="programs_km.html">វគ្គសិក្សា</a></li>
+            <li><a href="gallery_km.html" class="active">រូបភាព</a></li>
+            <li><a href="contact_km.html">ទំនាក់ទំនង</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECTION 1: OUR SCHOOL -->
+    <section class="gallery-section">
+        <h2><i class="fa-solid fa-school"></i>​ សាលារៀន</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> School photo 1</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> School photo 2</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> School photo 3</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> School photo 4</div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 2: OUR TEACHERS -->
+    <section class="gallery-section">
+        <h2><i class="fa-solid fa-chalkboard-user"></i> លោកគ្រូអ្នកគ្រូ</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Teacher photo 1</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Teacher photo 2</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Teacher photo 3</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Teacher photo 4</div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 3: STUDENT LIFE -->
+    <section class="gallery-section">
+        <h2><i class="fa-solid fa-users"></i> សិស្សានុសិស្ស</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 1</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 2</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 3</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 4</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 5</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Student photo 6</div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 4: ACTIVITIES & EVENTS -->
+    <section class="gallery-section">
+        <h2><i class="fa-solid fa-star"></i> សកម្មភាពសាលា</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 1</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 2</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 3</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 4</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 5</div>
+            <div class="photo-placeholder"><i class="fa-regular fa-image"></i> Event photo 6</div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 5: VIDEOS -->
+    <section class="gallery-section">
+        <h2><i class="fa-solid fa-circle-play"></i> វីដេអូ</h2>
+        <div class="video-grid">
+            <div class="video-placeholder">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>School intro video</span>
+            </div>
+            <div class="video-placeholder">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>Classroom activities</span>
+            </div>
+            <div class="video-placeholder">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>School events highlight</span>
+            </div>
+        </div>
+    </section>
+
+<footer style="background-color: #113b61; color: rgba(255,255,255,0.85); margin-top: 60px;">
+    <div style="max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; padding: 50px 20px;">
+
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">សាលារៀន​ ខេមប៊េស</h3>
+            <p style="font-size: 14px; line-height: 1.6;">ការអប់រំប្រកបដោយគុណភាព សម្រាប់សិស្សានុសិស្សវ័យក្មេង ក្នុងបរិយាកាសប្រកបដោយការយកចិត្តទុកដាក់</p>
+        </div>
+
+        <div>
+            <h3 style="color: #f8931f; margin-bottom: 15px; font-size: 18px;">ទំនាក់ទំនង</h3>
+            <p style="font-size: 14px; line-height: 1.6; margin-bottom: 6px;">
+                <i class="fa-solid fa-location-dot" style="margin-right: 6px;"></i>សង្កាត់ឃ្មួញ, រាជធានីភ្នំពេញ
+            </p>
+            <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; margin-bottom: 6px;">
+                <i class="fa-solid fa-phone" style="margin-top: 3px; flex-shrink: 0;"></i>
+                <div style="display: flex; flex-direction: column; gap: 2px; line-height: 1.6;">
+                    <span>096 674 679</span>
+                    <span>017 737 362</span>
+                    <span>097 352 387 8</span>
+                </div>
+            </div>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0;">
+                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> cambestschool@email.com
+            </p>
+        </div>
+
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.15); text-align: center; padding: 14px 20px; font-size: 13px; color: rgba(255,255,255,0.5);">
+        <p style="margin: 0;">© 2026 CamBest School. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
